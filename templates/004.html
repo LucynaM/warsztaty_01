@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Guess the number</title>
+        <style>
+            button, button:focus {
+                border-radius: 0;
+                box-sizing: border-box;
+                border: 1px solid lightgrey;
+                padding: 5px 25px;
+                margin: 15px 0px 15px;
+                font-size: .8em;
+                width: auto;
+            }
+            label {
+                color: grey;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Wybierz liczbę z przedziału 0-1000</p>
+
+        <!--Form - start-->
+        <form action="/" method="POST">
+            <button name="answer" value="start">Start</button>
+            <br>
+            {% if guess %}
+            <button name="answer" value="less">Mniej</button>
+            <button name="answer" value="more">Więcej</button>
+            <button name="answer" value="guess">Trafiłeś</button>
+            {% endif %}
+
+            <input type="hidden" name="guess" value="{{ guess }}">
+            <input type="hidden" name="min" value="{{ min }}">
+            <input type="hidden" name="max" value="{{ max }}">
+            <br>
+        </form>
+        <!--Form - stop-->
+        {% if guess %}
+        <p>{{ guess }}</p>
+        {% endif %}
+
+    </body>
+</html>
